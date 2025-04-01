@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/01 17:09:23 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 00:11:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-typedef pthread_mutex_t t_mxt;
+typedef pthread_mutex_t	t_mxt;
 
-typedef struct s_table t_table;
+typedef struct s_table	t_table;
 
 typedef struct s_fork
 {
@@ -55,5 +55,8 @@ struct s_table
 	t_fork		*forks;
 	t_philo		*philos;
 }				t_table;
+
+t_table	parse(char **av, t_table *table);
+int		is_valid_number(char *str);
 
 #endif

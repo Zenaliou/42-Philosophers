@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:21:26 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/01 18:21:42 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 00:09:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
-int	is_duplicate(t_stack *a, int num)
+void	print_error(const char *msg)
 {
-	while (a)
-	{
-		if (a->value == num)
-			return (1);
-		a = a->next;
-	}
-	return (0);
+	ft_printf("Error: %s\n", msg);
+}
+
+void	clean_exit(t_table *table)
+{
+	if (table->forks)
+		free(table->forks);
+	if (table->philos)
+		free(table->philos);
 }
