@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 16:13:32 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 17:32:06 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,7 @@ void	think(t_philo *philo);
 long	get_time_ms(void);
 void	print_status(t_philo *philo, char *status);
 void	ft_usleep(long time_in_ms);
+long	ft_atol(const char *str);
+int		ft_isdigit(int nb);
 
 #endif

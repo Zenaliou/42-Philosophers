@@ -6,28 +6,28 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:58:58 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 15:56:20 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 17:30:43 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-// static long	ft_atol(const char *str)
-// {
-// 	long	result;
-// 	int		i;
+long	ft_atol(const char *str)
+{
+	long	result;
+	int		i;
 
-// 	i = 0;
-// 	result = 0;
-// 	while (str[i] >= '0' && str[i] <= '9')
-// 	{
-// 		result = result * 10 + (str[i] - '0');
-// 		if (result > INT_MAX)
-// 			return (-1);
-// 		i++;
-// 	}
-// 	return (result);
-// }
+	i = 0;
+	result = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		if (result > INT_MAX)
+			return (-1);
+		i++;
+	}
+	return (result);
+}
 
 bool	parse_args(char **av, t_table *table)
 {

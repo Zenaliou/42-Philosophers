@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:21:26 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 16:11:41 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 17:31:56 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ void	print_status(t_philo *philo, char *status)
         printf("%ld %d %s\n", timestamp, philo->id, status);
     }
     pthread_mutex_unlock(&philo->table->print_mutex);
+}
+
+int	ft_isdigit(int nb)
+{
+	if (nb >= '0' && nb <= '9')
+		return (1);
+	return (0);
 }

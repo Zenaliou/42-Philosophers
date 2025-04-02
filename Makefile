@@ -9,17 +9,12 @@ OBJS		=	$(SRCS:.c=.o)
 
 INCLUDES	= 	-I includes -I libft -I ft_printf
 
-LIBFT		=	libft/libft.a
-
 FT_PRINTF	=	ft_printf/libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
-
-$(LIBFT):
-	make -C libft
+	$(CC) $(CFLAGS) $(OBJS) $(FT_PRINTF) -o $(NAME)
 
 $(FT_PRINTF):
 	make -C ft_printf
@@ -29,12 +24,10 @@ $(FT_PRINTF):
 
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
-	make -C libft clean
 	make -C ft_printf clean
 
 fclean: clean
 	rm -f $(NAME)
-	make -C libft fclean
 	make -C ft_printf fclean
 
 re: fclean all
