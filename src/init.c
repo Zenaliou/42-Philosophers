@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:55:04 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 12:45:07 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 14:53:54 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static bool	init_philosophers(t_table *table)
 	i = 0;
 	while (i < table->philo_nbr)
 	{
-		table->philos.id = i + 1;
-		table->philos.meals_count = 0;
-		table->philos.full = false;
-		table->philos.last_meal_time = 0;
-		table->philos.left_fork = &table->forks[i];
-		table->philos.right_fork = &table->forks[(i + 1) % table->philo_nbr];
+		table->philos[i].id = i + 1;
+		table->philos[i].meals_count = 0;
+		table->philos[i].full = false;
+		table->philos[i].last_meal_time = 0;
+		table->philos[i].left_fork = &table->forks[i];
+		table->philos[i].right_fork = &table->forks[(i + 1) % table->philo_nbr];
 		table->philos[i].table = table;
 		i++;
 	}
