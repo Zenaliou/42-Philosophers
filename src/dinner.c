@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 11:08:20 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 12:42:30 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 16:06:25 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	while (!philo->table->end_simulation)
 	{
-		eat(philo)
+		eat(philo);
 		sleep_philo(philo);
 		think(philo);
 	}

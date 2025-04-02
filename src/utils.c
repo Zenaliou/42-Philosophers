@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:21:26 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 00:09:30 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/02 16:11:41 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,17 @@ void	clean_exit(t_table *table)
 		free(table->forks);
 	if (table->philos)
 		free(table->philos);
+}
+
+void	print_status(t_philo *philo, char *status)
+{
+	long    timestamp;
+
+    pthread_mutex_lock(&philo->table->print_mutex);
+    if (!philo->table->end_simulation)
+    {
+        timestamp = get_time_ms() - philo->table->start_simulation;
+        printf("%ld %d %s\n", timestamp, philo->id, status);
+    }
+    pthread_mutex_unlock(&philo->table->print_mutex);
 }

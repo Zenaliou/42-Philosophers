@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 15:06:07 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 16:13:32 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <stdint.h>
 # include <limits.h>
-# include <pthread.h>
+#include <pthread.h>
 # include <stdbool.h>
 # include <sys/time.h>
 # include "libft.h"
@@ -35,14 +35,14 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	int			id;
-	long		meals_count;
-	bool		full;
-	long		last_meal_time;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
-	pthread_t	thread_id;
-	t_table		*table;
+	int				id;
+	long			meals_count;
+	bool			full;
+	long			last_meal_time;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
+	pthread_t		thread_id;
+	t_table			*table;
 }			t_philo;
 
 typedef struct s_table
@@ -56,6 +56,7 @@ typedef struct s_table
 	bool		end_simulation;
 	t_fork		*forks;
 	t_philo		*philos;
+	pthread_mutex_t	print_mutex;
 }				t_table;
 
 t_table	parse(char **av, t_table *table);
@@ -65,5 +66,14 @@ void	clean_exit(t_table *table);
 void	end_simulation(t_table *table);
 bool	start_dinner(t_table *table);
 void	destroy(t_table *table);
+bool	init(t_table *table);
+void	end_simulation(t_table *table);
+bool	start_dinner(t_table *table);
+void	eat(t_philo *philo);
+void	sleep_philo(t_philo *philo);
+void	think(t_philo *philo);
+long	get_time_ms(void);
+void	print_status(t_philo *philo, char *status);
+void	ft_usleep(long time_in_ms);
 
 #endif

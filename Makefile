@@ -2,8 +2,8 @@ NAME		=	philosophers
 
 CFLAGS		=	-Wall -Werror -Wextra -Iincludes -g3
 
-SRCS		=	src/check.c src/philosophers.c src/parsing.c src/init.c src/dinner.c \
-				src/destroy.c
+SRCS		=	src/utils.c src/philosophers.c src/parsing.c src/init.c src/dinner.c \
+				src/destroy.c src/time.c src/routine.c
 
 OBJS		=	$(SRCS:.c=.o)
 
