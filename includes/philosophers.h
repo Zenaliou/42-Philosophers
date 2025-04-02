@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 00:11:36 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/02 10:56:44 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ struct s_table
 
 t_table	parse(char **av, t_table *table);
 int		is_valid_number(char *str);
+void	print_error(const char *msg);
+void	clean_exit(t_table *table);
 
 #endif
