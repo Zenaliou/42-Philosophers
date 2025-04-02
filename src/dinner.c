@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 11:08:20 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 11:59:35 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 12:42:30 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ bool	start_dinner(t_table *table)
 	i = 0;
 	while (i < table->philo_nbr)
 	{
-		if (pthread_create(&table->philos[i].thread_id, NULL, 
-            philo_routine, &table->philos[i]) != 0)
-            return (print_error("Thread creation failed"), false);
+		if (pthread_create(&table->philos[i].thread_id, NULL,
+				philo_routine, &table->philos[i]) != 0)
+			return (print_error("Thread creation failed"), false);
 		i++;
 	}
 	return (true);

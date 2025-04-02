@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:58:58 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 00:07:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/02 12:42:53 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static long	ft_atol(const char *str)
 
 bool	parse_args(char **av, t_table *table)
 {
-	if (!is_valid_number(av[1]) || !is_valid_number(av[2]) ||
-		!is_valid_number(av[3]) || (av[5] && !is_valid_number(av[5])))
+	if (!is_valid_number(av[1]) || !is_valid_number(av[2])
+		|| !is_valid_number(av[3]) || (av[5] && !is_valid_number(av[5])))
 		return (print_error("Invalid argument values.", false));
 	table->philo_nbr = ft_atol(av[1]);
 	table->time_to_die = ft_atol(av[2]);

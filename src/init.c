@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:55:04 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 11:07:37 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 12:45:07 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static bool	init_forks(t_table *table)
 {
 	int	i;
-	
-	table->forks = malloc(sizeof(t_forks) * table->philo_nbr)
+
+	table->forks = malloc(sizeof(t_fork) * table->philo_nbr);
 	if (!table->forks)
 		return (printf_error("Mutex init failed"), false);
 	i = 0;
@@ -33,7 +33,7 @@ static bool	init_philosophers(t_table *table)
 {
 	int	i;
 
-	table->philos = malloc(sizeof(t_philo) * table->philo_nbr)
+	table->philos = malloc(sizeof(t_philo) * table->philo_nbr);
 	if (!table->philos)
 		return (printf_error("Mutex init failed"), false);
 	i = 0;

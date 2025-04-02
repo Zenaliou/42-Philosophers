@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 10:56:44 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/02 12:07:05 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <limits.h>
 # include <pthread.h>
+# include <stdbool.h>
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -43,7 +44,7 @@ typedef struct s_philo
 	t_table		*table;
 }			t_philo;
 
-struct s_table
+typedef struct s_table
 {
 	long		philo_nbr;
 	long		time_to_die;
@@ -60,5 +61,8 @@ t_table	parse(char **av, t_table *table);
 int		is_valid_number(char *str);
 void	print_error(const char *msg);
 void	clean_exit(t_table *table);
+void	end_simulation(t_table *table);
+bool	start_dinner(t_table *table);
+
 
 #endif
