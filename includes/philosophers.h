@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 17:32:06 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/04 19:36:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ void	print_status(t_philo *philo, char *status);
 void	ft_usleep(long time_in_ms);
 long	ft_atol(const char *str);
 int		ft_isdigit(int nb);
+int		count_full_philos(t_table *table);
+void	*monitor_routine(void *arg);
 
 #endif

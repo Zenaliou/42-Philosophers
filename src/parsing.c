@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:58:58 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 17:30:43 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/04 19:44:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 long	ft_atol(const char *str)
 {
 	long	result;
+	int		sign;
 	int		i;
 
 	i = 0;
+	sign = 1;
 	result = 0;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			sign = -1;
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		if (result > INT_MAX)
-			return (-1);
-		i++;
-	}
-	return (result);
+		result = result * 10 + (str[i++] - '0');
+	return (result * sign);
 }
+
 
 bool	parse_args(char **av, t_table *table)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:55:04 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 16:01:29 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/04 19:55:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static bool	init_philosophers(t_table *table)
 
 	table->philos = malloc(sizeof(t_philo) * table->philo_nbr);
 	if (!table->philos)
-		return (print_error("Mutex init failed"), false);
+		return (print_error("Malloc failed"), false);
 	i = 0;
 	while (i < table->philo_nbr)
 	{
 		table->philos[i].id = i + 1;
 		table->philos[i].meals_count = 0;
 		table->philos[i].full = false;
-		table->philos[i].last_meal_time = 0;
+		table->philos[i].last_meal_time = table->start_simulation;
 		table->philos[i].left_fork = &table->forks[i];
 		table->philos[i].right_fork = &table->forks[(i + 1) % table->philo_nbr];
 		table->philos[i].table = table;

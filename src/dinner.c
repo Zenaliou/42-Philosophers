@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dinner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 11:08:20 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 16:06:25 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/04 19:46:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (!philo->table->end_simulation)
+	while (!philo->table->end_simulation && !philo->full)
 	{
 		eat(philo);
 		sleep_philo(philo);
@@ -28,9 +28,13 @@ static void	*philo_routine(void *arg)
 
 bool	start_dinner(t_table *table)
 {
-	int	i;
-
+	int			i;
+	pthread_t	monitor;
+	
 	table->start_simulation = get_time_ms();
+	if (pthread_create(&monitor, NULL, monitor_routine, table) != 0)
+	return (print_error("Failed to create monitor thread"), false);
+	pthread_detach(monitor);	
 	i = 0;
 	while (i < table->philo_nbr)
 	{
