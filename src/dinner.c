@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 11:08:20 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:46:12 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/04 19:57:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ bool	start_dinner(t_table *table)
 	int			i;
 	pthread_t	monitor;
 	
-	table->start_simulation = get_time_ms();
 	if (pthread_create(&monitor, NULL, monitor_routine, table) != 0)
-	return (print_error("Failed to create monitor thread"), false);
+		return (print_error("Failed to create monitor thread"), false);
 	pthread_detach(monitor);	
 	i = 0;
 	while (i < table->philo_nbr)
