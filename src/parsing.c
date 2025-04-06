@@ -6,11 +6,18 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:58:58 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:44:21 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/06 15:32:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+int	ft_isdigit(int nb)
+{
+	if (nb >= '0' && nb <= '9')
+		return (1);
+	return (0);
+}
 
 long	ft_atol(const char *str)
 {
@@ -28,7 +35,6 @@ long	ft_atol(const char *str)
 		result = result * 10 + (str[i++] - '0');
 	return (result * sign);
 }
-
 
 bool	parse_args(char **av, t_table *table)
 {

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:49:35 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:35:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/06 15:33:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->right_fork->fork);
 }
 
-void sleep_philo(t_philo *philo)
+void	sleep_philo(t_philo *philo)
 {
-    print_status(philo, "is sleeping");
-    ft_usleep(philo->table->time_to_sleep);
+	print_status(philo, "is sleeping");
+	ft_usleep(philo->table->time_to_sleep);
 }
 
-void think(t_philo *philo)
+void	think(t_philo *philo)
 {
-    print_status(philo, "is thinking");
+	print_status(philo, "is thinking");
 }

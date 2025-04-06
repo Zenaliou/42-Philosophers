@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:21:26 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/02 17:31:56 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/06 15:32:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+static int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && s1[i] == s2[i])
+	{
+		if (s1[i] == '\0')
+			return (0);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 int	is_valid_number(char *str)
 {
@@ -49,20 +65,24 @@ void	clean_exit(t_table *table)
 
 void	print_status(t_philo *philo, char *status)
 {
-	long    timestamp;
+	long	timestamp;
 
-    pthread_mutex_lock(&philo->table->print_mutex);
-    if (!philo->table->end_simulation)
-    {
-        timestamp = get_time_ms() - philo->table->start_simulation;
-        printf("%ld %d %s\n", timestamp, philo->id, status);
-    }
-    pthread_mutex_unlock(&philo->table->print_mutex);
-}
-
-int	ft_isdigit(int nb)
-{
-	if (nb >= '0' && nb <= '9')
-		return (1);
-	return (0);
+	pthread_mutex_lock(&philo->table->print_mutex);
+	if (!philo->table->end_simulation)
+	{
+		timestamp = get_time_ms() - philo->table->start_simulation;
+		if (ft_strncmp(status, "is eating", 9) == 0)
+			printf("\033[0;32m");
+		else if (ft_strncmp(status, "is sleeping", 11) == 0)
+			printf("\033[0;34m");
+		else if (ft_strncmp(status, "is thinking", 11) == 0)
+			printf("\033[0;33m");
+		else if (ft_strncmp(status, "has taken a fork", 16) == 0)
+			printf("\033[0;35m");
+		else if (ft_strncmp(status, "died", 4) == 0)
+			printf("\033[0;31m");
+		printf("%ld %d %s\n", timestamp, philo->id, status);
+		printf("\033[0m");
+	}
+	pthread_mutex_unlock(&philo->table->print_mutex);
 }

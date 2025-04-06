@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 11:08:20 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:57:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/06 15:29:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->id % 2 == 0)
+		usleep(1000);
 	while (!philo->table->end_simulation && !philo->full)
 	{
 		eat(philo);
@@ -30,10 +32,10 @@ bool	start_dinner(t_table *table)
 {
 	int			i;
 	pthread_t	monitor;
-	
+
 	if (pthread_create(&monitor, NULL, monitor_routine, table) != 0)
 		return (print_error("Failed to create monitor thread"), false);
-	pthread_detach(monitor);	
+	pthread_detach(monitor);
 	i = 0;
 	while (i < table->philo_nbr)
 	{

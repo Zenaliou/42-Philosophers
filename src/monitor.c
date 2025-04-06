@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:27:50 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:43:18 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/06 15:38:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,33 @@
 
 void	*monitor_routine(void *arg)
 {
-	t_table	*table;
+	t_table	*table = (t_table *)arg;
 	int		i;
+	long	time_diff;
+	long	timestamp;
 
-	table = (t_table *)arg;
 	while (!table->end_simulation)
 	{
 		i = 0;
 		while (i < table->philo_nbr)
 		{
-			pthread_mutex_lock(&table->print_mutex);
-			if ((get_time_ms() - table->philos[i].last_meal_time) > table->time_to_die)
+			time_diff = get_time_ms() - table->philos[i].last_meal_time;
+			if (time_diff > table->time_to_die)
 			{
+				timestamp = get_time_ms() - table->start_simulation;
 				table->end_simulation = true;
-				printf("%ld %d died\n", get_time_ms() - table->start_simulation, table->philos[i].id);
+				pthread_mutex_lock(&table->print_mutex);
+				printf("\033[0;31m%ld %d died\033[0m\n", timestamp, table->philos[i].id);
 				pthread_mutex_unlock(&table->print_mutex);
 				return (NULL);
 			}
-			pthread_mutex_unlock(&table->print_mutex);
 			i++;
 		}
 		usleep(1000);
 	}
 	return (NULL);
 }
+
 
 int	count_full_philos(t_table *table)
 {
@@ -57,6 +60,6 @@ int	count_full_philos(t_table *table)
 	{
 		table->end_simulation = true;
 		return (0);
-	}	
+	}
 	return (count);
 }

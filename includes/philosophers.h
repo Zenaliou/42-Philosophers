@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:55:33 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:36:35 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/06 15:29:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 # include <stdio.h>
 # include <stdint.h>
 # include <limits.h>
-#include <pthread.h>
+# include <pthread.h>
 # include <stdbool.h>
 # include <sys/time.h>
-# include "libft.h"
 # include "ft_printf.h"
 
 typedef pthread_mutex_t	t_mxt;
@@ -47,15 +46,15 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	long		philo_nbr;
-	long		time_to_die;
-	long		time_to_eat;
-	long		time_to_sleep;
-	long		nbr_limits_meals;
-	long		start_simulation;
-	bool		end_simulation;
-	t_fork		*forks;
-	t_philo		*philos;
+	long			philo_nbr;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	long			nbr_limits_meals;
+	long			start_simulation;
+	bool			end_simulation;
+	t_fork			*forks;
+	t_philo			*philos;
 	pthread_mutex_t	print_mutex;
 }				t_table;
 
