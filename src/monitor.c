@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:27:50 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/06 15:38:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/07 11:01:57 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	*monitor_routine(void *arg)
 	}
 	return (NULL);
 }
-
 
 int	count_full_philos(t_table *table)
 {
