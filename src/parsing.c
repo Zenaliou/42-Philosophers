@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 17:58:58 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/07 10:40:31 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/08 20:16:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ bool	parse_args(char **av, t_table *table)
 	table->time_to_die = ft_atol(av[2]);
 	table->time_to_eat = ft_atol(av[3]);
 	table->time_to_sleep = ft_atol(av[4]);
-	// if (table->philo_nbr == 1)
-	// 	return (print_error("Died"), false);
 	if (av[5])
 		table->nbr_limits_meals = ft_atol(av[5]);
 	else

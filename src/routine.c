@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:49:35 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/08 13:58:26 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/08 20:16:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,5 @@ void	sleep_philo(t_philo *philo)
 
 void	think(t_philo *philo)
 {
-	// long	t_eat;
-	// long	t_sleep;
-	// long	t_think;
-	
-	// if (philo->table->philo_nbr % 2 == 0)
-	// 	return ;
-	// t_eat = philo->table->time_to_eat;
-	// t_sleep = philo->table->time_to_sleep;
-	// t_think = t_eat * 2 - t_sleep;
-	// if (t_think < 0)
-	// 	t_think = 0;
 	print_status(philo, "is thinking");
 }
