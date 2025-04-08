@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:55:04 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/04 19:55:59 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/08 20:10:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ static bool	init_philosophers(t_table *table)
 
 bool	init(t_table *table)
 {
-	if (!init_forks(table) || !init_philosophers(table))
-		return (clean_exit(table), false);
-	return (true);
+	if (pthread_mutex_init(&table->print_mutex, NULL) != 0)
+		return (print_error("Mutex init failed"), false);
+    if (!init_forks(table) || !init_philosophers(table))
+        return (clean_exit(table), false);
+    return (true);
 }

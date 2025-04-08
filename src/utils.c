@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:21:26 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/06 15:32:15 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/08 20:06:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	print_status(t_philo *philo, char *status)
 {
 	long	timestamp;
 
+	if (!philo || !philo->table || !status)
+		return ;
 	pthread_mutex_lock(&philo->table->print_mutex);
 	if (!philo->table->end_simulation)
 	{
