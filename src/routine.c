@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:49:35 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/06 15:33:08 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/08 13:58:26 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->left_fork->fork);
 	print_status(philo, "has taken a fork");
+	if (philo->table->philo_nbr == 1)
+	{
+		ft_usleep(philo->table->time_to_die);
+		return ;
+	}
 	pthread_mutex_lock(&philo->right_fork->fork);
 	print_status(philo, "has taken a fork");
 	print_status(philo, "is eating");
@@ -36,5 +41,16 @@ void	sleep_philo(t_philo *philo)
 
 void	think(t_philo *philo)
 {
+	// long	t_eat;
+	// long	t_sleep;
+	// long	t_think;
+	
+	// if (philo->table->philo_nbr % 2 == 0)
+	// 	return ;
+	// t_eat = philo->table->time_to_eat;
+	// t_sleep = philo->table->time_to_sleep;
+	// t_think = t_eat * 2 - t_sleep;
+	// if (t_think < 0)
+	// 	t_think = 0;
 	print_status(philo, "is thinking");
 }

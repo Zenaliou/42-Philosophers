@@ -6,7 +6,7 @@
 /*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:27:50 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/07 11:01:57 by niclee           ###   ########.fr       */
+/*   Updated: 2025/04/08 17:48:57 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*monitor_routine(void *arg)
 	while (!table->end_simulation)
 	{
 		i = 0;
-		while (i < table->philo_nbr)
+		while (i < table->philo_nbr && !table->end_simulation)
 		{
 			time_diff = get_time_ms() - table->philos[i].last_meal_time;
 			if (time_diff > table->time_to_die)
@@ -36,6 +36,11 @@ void	*monitor_routine(void *arg)
 			}
 			i++;
 		}
+		if (table->nbr_limits_meals > 0 && count_full_philos(table) == table->philo_nbr)
+        {
+            table->end_simulation = true;
+            return (NULL);
+        }
 		usleep(1000);
 	}
 	return (NULL);
@@ -54,11 +59,11 @@ int	count_full_philos(t_table *table)
 			count++;
 		i++;
 	}
-	if (table->nbr_limits_meals > 0
-		&& count_full_philos(table) == table->philo_nbr)
-	{
-		table->end_simulation = true;
-		return (0);
-	}
+	// if (table->nbr_limits_meals > 0
+	// 	&& count_full_philos(table) == table->philo_nbr)
+	// {
+	// 	table->end_simulation = true;
+	// 	return (0);
+	// }
 	return (count);
 }
