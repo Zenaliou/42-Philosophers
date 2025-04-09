@@ -1,35 +1,44 @@
-NAME		=	philosophers
+#COMPILATION
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -Iincludes -g3
 
-CFLAGS		=	-Wall -Werror -Wextra -Iincludes -g3
+#DIRECTORIES
+SRC_DIR = src/
+OBJ_DIR = obj/
+INCLUDE_DIR = includes/
 
-SRCS		=	src/utils.c src/philosophers.c src/parsing.c src/init.c src/dinner.c \
-				src/destroy.c src/time.c src/routine.c src/monitor.c
+#SOURCES
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-OBJS		=	$(SRCS:.c=.o)
+#NAME
+NAME = philo
 
-INCLUDES	= 	-I includes -I libft -I ft_printf
+#COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+NC = \033[0m
 
-FT_PRINTF	=	ft_printf/libftprintf.a
-
+#RULES
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(FT_PRINTF) -o $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(GREEN)✓ Compilation de $(NAME) réussie!$(NC)"
 
-$(FT_PRINTF):
-	make -C ft_printf
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE_DIR)/philosophers.h
+	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN)Compilation de $< réussie.$(NC)"
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
-	make -C ft_printf clean
+	rm -rf $(OBJ_DIR)
+	@echo "$(RED)Fichiers objets supprimés.$(NC)"
 
 fclean: clean
 	rm -f $(NAME)
-	make -C ft_printf fclean
+	@echo "$(RED)Exécutable $(NAME) supprimé.$(NC)"
 
 re: fclean all
-
-.PHONY: all clean fclean re

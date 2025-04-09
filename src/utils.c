@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niclee <niclee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 18:21:26 by niclee            #+#    #+#             */
-/*   Updated: 2025/04/08 20:06:08 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/09 15:53:17 by niclee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	is_valid_number(char *str)
 
 void	print_error(const char *msg)
 {
-	ft_printf("Error: %s\n", msg);
+	printf("Error: %s\n", msg);
 }
 
 void	clean_exit(t_table *table)
